@@ -1,0 +1,10 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block title %}Nous rejoindre | {% endblock %}
+{% block meta %}
+  <meta name="description" content="Rejoignez notre communauté pour le plaisir d'observer et de partager sur les oiseaux, mais aussi afin de faire un geste pour la biodiversité. " />
+{% endblock %}
+
+{% block fos_user_content %}
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}

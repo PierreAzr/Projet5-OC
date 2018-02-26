@@ -1,0 +1,7 @@
+services:
+#    ocnao.example:
+#        class: OC\NAOBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+  ocnao.observations:
+    class: OC\NAOBundle\Services\Observations

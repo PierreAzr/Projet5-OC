@@ -1,0 +1,59 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}Nous contacter | Nos Amis les Oiseaux{% endblock %}
+{% block meta %}
+  <meta name="description" content="Pour plus d'informations sur l'ornithologie, les sciences participatives ou le fonctionnement de notre site, n'hésitez pas à nous contacter via notre formulaire. " />
+{% endblock %}
+
+{% block contact %}class="menuactive"{% endblock %}
+
+{% block body %}
+<div class="bgform">
+  <div class="container formcontact">
+        <br>
+        <br>
+        <h1>CONNTACTEZ-NOUS POUR PLUS D'INFORMATION</h1>
+        <br>
+        <br>
+        {{ form_start(form) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+          <div class="form-group">
+            {{ form_label(form.name, "Nom") }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.prename, "Prénom") }}
+            {{ form_errors(form.prename) }}
+            {{ form_widget(form.prename, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.email, "Votre Email") }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.object, "Objet du messsage") }}
+            {{ form_errors(form.object) }}
+            {{ form_widget(form.object, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_label(form.message, "Message") }}
+            {{ form_errors(form.message) }}
+            {{ form_widget(form.message, {'attr': {'class': 'form-control','style': 'resize:vertical'}}) }}
+            </div>
+          <div class="form-group text-right">
+            <br>
+            <br>
+              {{ form_widget(form.submit, {'attr': {'class': 'btn-site-orange', 'style': 'width:221px'}}) }}
+          </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+        <br>
+        <p><span style="color:red">* </span><span style="color:#ff5b00"> Champs obligatoire</span></p>
+        <br>
+        <br>
+  </div>
+</div>
+{% endblock %}

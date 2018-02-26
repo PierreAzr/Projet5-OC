@@ -1,0 +1,96 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block observationvalide %}class="menuactive"{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>OBSERVATIONS À VALIDER</h1>
+  <div class="row">
+  {% if notobs == true %}
+    <div class="text-center"style="margin-bottom:400px">
+    <h4>Il n'y a pas d'observation à valider pour le momment</h4>.
+    </div>
+  {% else %}
+    <div class="row">
+      {% for obs in observationList %}
+      <div class="responsive">
+        <div class="gallerygris">
+            <div class="overlay">
+              {% if obs.picture.image is defined %}
+                <div class="picture2">
+                  <a href="{{ path('ocnao_observation', {'id': obs.id }) }}">
+                    <img class="imggallery" src="{{ asset('uploads/picture/' ~ obs.picture.image) }}" alt="Photo de l'observation"/>
+                  </a>
+                </div>
+              {% else %}
+                <div class="picture2">
+                  <a href="{{ path('ocnao_observation', {'id': obs.id }) }}">
+                    <img class="imggallery" src="{{ asset('assets/images/photoObs2.png') }}" alt="Photo de l'observation"/>
+                  </a>
+                </div>
+              {% endif %}
+              <div class="desc">
+                <div class="" style="color:#00ac98;">
+                  {{ obs.taxrefname }}
+                </div>
+                <div class="" style="margin-top:10px">
+                  <div class="text-left" style="margin-right:15%;display: inline-block;">
+                    {{ obs.user.username }}
+                  </div>
+                  <div class="text-right"style="margin-left:15%; display: inline-block;">
+                    {{ obs.dateObs.date|date("d/m/Y") }}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+
+    <div class="row">
+
+        <br>
+      <div class="hidden-xs">
+        <div class="text-center">
+          <ul class="pagination">
+            {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+            {% for p in range(1, nbPages) %}
+
+              <li{% if p == page %} class="active"{% endif %}>
+              <a href="{{ path('ocnao_profil_observationatvalidate', {'page': p}) }}">{{ p }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-6 visible-xs">
+        <div class="text-left">
+          {% if page == 1 %}
+
+          {% else %}
+          <div class="">
+              <a href="{{ path('ocnao_profil_observationatvalidate', {'page': page - 1}) }}"><img style="height:50px" src="{{ asset('assets/images/Pictoflecheg.png') }}" alt="precedente"></a>
+          </div>
+          {% endif %}
+        </div>
+        <br>
+      </div>
+      <div class="col-xs-6 visible-xs">
+        <div class="text-right">
+          {% if page == nbPages %}
+        {% else %}
+        <div class="">
+          <a href="{{ path('ocnao_profil_observationatvalidate', {'page': page + 1}) }}"><img style="height:50px" src="{{ asset('assets/images/Pictofleched.png') }}" alt="suivante"></a>
+        </div>
+        {% endif %}
+        </div>
+        <br>
+      </div>
+    </div>
+
+
+  {% endif %}
+</div>
+{% endblock %}

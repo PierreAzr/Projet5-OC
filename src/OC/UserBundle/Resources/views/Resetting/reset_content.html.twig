@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="bgform">
+  <div class="container form">
+      <br>
+      <br>
+      <h1 class="text-center">RÉINITIALISER MOT DE PASSE</h1>
+      <br>
+      <br>
+      {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+          {{ form_widget(form) }}
+      <br>
+      <div class="text-center">
+        <input class="btn-site-orange pad" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+      </div>
+      {{ form_end(form) }}
+      <br>
+      <p><span style="color:red">* </span><span style="color:#ff5b00"> Champs obligatoire</span></p>
+      <br>
+      <br>
+  </div>
+</div>

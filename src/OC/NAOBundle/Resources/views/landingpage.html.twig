@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+		<!-- Bootstrap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{{asset("assets/css/landing.css")}}">
+		<link rel="stylesheet" href="{{asset("assets/css/profil.css")}}">
+
+	<title>Découvrez l'ornithologie du Web | Nos Amis les Oiseaux</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row bloc1">
+			<div class="">
+				<div class="col-xs-12 col-md-offset-6 col-md-6">
+					<h1>Observer les oiseaux pour la science</h1>
+					<p>S'instruire et s'amuser tout en faisant avancer la recherche</p>
+					<div class="center">
+						<form class="" action="{{ path('fos_user_registration_register') }}">
+							<input class="btn-site-orange" style="width:147px" type="submit" value="S'inscrire" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row bloc2 pad">
+			<div class="col-xs-12 col-sm-12 visible-xs noPad">
+				<h4 class="who">Qui sommes-nous ?</h4>
+				<div class="center">
+					<img class="logoMenu" alt="Logo" src="{{ asset("assets/images/LogomenuNAO@3x.png")}}"/>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<div class="hidden-xs">
+					<h4 class="who">Qui sommes-nous ?</h4>
+				</div>
+				<p>Nos Amis les Oiseaux est une association regroupant des passionnés de la nature et plus particulièrement d'ornithologie. Amateurs ou professionnels, nous observons et étudions le monde des oiseaux.</p>
+				<p>Notre site internet a été créé dans le but d'allier <strong>ornithologie et recherche scientifique</strong>.</p>
+				<div class="visible-xs center">
+					<form class="" action="{{ path('fos_user_registration_register') }}">
+						<input class="btn-site-orange" style="width:147px" type="submit" value="Nous rejoindre" />
+					</form>
+				</div>
+				<div class="hidden-xs">
+					<form class="" action="{{ path('fos_user_registration_register') }}">
+						<input class="btn-site-orange" style="width:147px" type="submit" value="Nous rejoindre" />
+					</form>
+				</div>
+			</div>
+			<div class="col-md-6 hidden-xs center">
+				<img class="" alt="Logo" src="{{ asset("assets/images/LogomenuNAO@3x.png")}}"/>
+			</div>
+		</div>
+
+		<div class="row bloc3 pad">
+			<div class="col-xs-12 noPad">
+				<h4>Comment ça marche ?</h4>
+
+				<div class="row">
+					<div class="bloctext col-xs-12 col-md-4">
+						<div class="picto_landing center">
+							<img src="{{ asset("assets/images/picto_oeil.png")}}" alt="">
+						</div>
+						<h4 class="center">Observer</h4>
+						<p>Levez les yeux et observez les oiseaux, où que vous vous trouviez.</p>
+					</div>
+					<div class="bloctext col-xs-12 col-md-4">
+						<div class="picto_landing center">
+							<img src="{{ asset("assets/images/picto_analyser.png")}}" alt="">
+						</div>
+						<h4 class="center">Analyser</h4>
+						<p>Identifiez l'oiseau aperçu. Relevez son espèce, sa localisation, la date... Et pourquoi pas une photo ! </p>
+					</div>
+
+					<div class="bloctext col-xs-12 col-md-4">
+						<div class="picto_landing_partage center">
+							<img src="{{ asset("assets/images/picto_partager.png")}}" alt="">
+						</div>
+						<h4 class="center">Partager</h4>
+						<p>Soumettez votre observation à la communauté. Les données collectées contribuent à la science !</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row bloc4">
+			<div class="col-xs-12 col-md-6 bloc4_1 pad">
+				<h4>Faire avancer la science</h4>
+				<p>La collecte de données sur les oiseaux est une source d'information précieuse pour les scientifiques. C'est un indicateur de l'état de santé de la nature.</p>
+				<p>En partageant vos observations, vous contribuez à un programme de recherche visant à étudier les effets du climat, de l'urbanisation et de l'agriculture sur la biodiversité.</p>
+				<p>Chaque observation est analysé par un naturaliste avant d'être validée. Soyez rassuré et lancez-vous !</p>
+			</div>
+			<div class="photo col-xs-12 col-md-6 bloc4_2 noPad">
+				<div class="">
+					<img src="{{ asset("assets/images/landing.jpg")}}" alt="Photo oiseau">
+					<img class="microscope"src="{{ asset("assets/images/picto_microscope.png")}}" alt="Microscope">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row bloc5">
+			<div class="col-xs-12 col-md-12 center">
+				<h2>Qu'attendez-vous ?</h2>
+				<form action="{{ path('ocnao_homepage') }}">
+					<input class="btn-site-orange" style="width:147px" type="submit" value="Participer" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}Participer à un projet scientifique | {% endblock %}
+{% block meta %}
+  <meta name="description" content="Découvrez comment fonctionne notre outil de partage d'observations, l'identification des oiseaux et les bienfaits pour la recherche scientifique." />
+{% endblock %}
+
+{% block faq %}class="menuactive"{% endblock %}
+
+{% block body %}
+
+<div class="faq">
+  <div class = "container">
+    <h1>Comment participer au projet scientifique ?</h1>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Qui sommes-nous ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <p>
+              Nos Amis les Oiseaux est une association regroupant des passionnés de la nature et plus particulièrement d'ornithologie.
+              Elle est ouverte à tous les amateurs ou professionnels, souhaitant observer et étudier le monde des oiseaux.
+            </p>
+            <p>
+              Créée en 1984, l’association Nos Amis les Oiseaux a été fondé par Michel Dujardin. Elle compte aujourd'hui plus de 1000 membres actifs.
+            </p>
+            <p>
+              L’observation des oiseaux étant un des indicateurs de l’état de santé de la nature, nous avons décidé de mettre notre passion au service de la science.</br>
+              Notre site web a été créé dans le but d'allier l’ornithologie à la recherche scientifique.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              Comment participer sur le site ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p class="bold" style="padding-left: 20px;"> - Être Observateur : Partager vos observations</p>
+            <p>
+              La première étape pour prendre part à notre aventure est de devenir un Observateur.
+              Après une inscription sur le site internet, vous pourrez ajouter des observations sur les oiseaux autour de vous.
+              Elles seront vérifiées avant d'être validées et transmises à notre programme de recherche.
+              </br>
+              L’ajout d’une observation a été conçue pour être rapide et intuitive pour vous laisser plus de temps sur le terrain.
+            </p>
+            <p>
+              La collecte d’informations sur les oiseaux est notre principale priorité, c’est donc l’un des moyens de participation que nous encourageons le plus. N’attendez plus et lancez-vous !
+            </p>
+            <div class="center">
+              <a class="inscription" href="{{ path('fos_user_registration_register') }}">S'INSCRIRE</a>
+            </div>
+            </br>
+            <p class="bold" style="padding-left: 20px;"> - Être Naturaliste : Valider les observations</p>
+            <p>
+              Le monde des oiseaux n’a plus de secret pour vous ? Devenez Naturaliste !
+              C’est un niveau d’engagement supérieur par rapport à l’Observateur. En devant Naturaliste, vous avez la charge de vérifier l’exactitude des observations soumises par les Observateurs avant de les valider pour le programme de recherche.</br>
+              Le Naturalise peut, comme l’Observateur, partager ses observations sur le terrain, elles seront directement prise en compte pour le programme (pas de validation préalable).</br>
+            </p>
+            <p>
+              Ce rôle impliquant de grandes responsabilités, nous étudions avec attention les demandes pour devenir Naturaliste.
+            </p>
+            <p>
+              La demande pour devenir Naturaliste se fait directement dans votre Profil personnel sur le site web. Nous prendrons contact avec vous par la suite pour revenir plus en détail sur ce rôle.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              De quels autres moyens je dispose pour vous aider ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p class="bold" style="padding-left: 20px;"> - Adhérer à l’association</p>
+            <p>
+              Une autre façon de nous soutenir est d’adhérer à notre association et de devenir membre à part entière de Nos Amis les Oiseaux ! Contactez-nous pour en savoir plus.
+            </p>
+
+            </br>
+            <p class="bold" style="padding-left: 20px;"> - Faire un don</p>
+            <p>
+              Enfin, vous avez la possibilité de faire un don à notre association. Grâce aux dons collectés nous pouvons mener des actions de plus grande envergure pour le bien être des oiseaux.</br>
+              Comme ce site web participatif !
+            </p>
+            <div class="center">
+              <a class="don" href="https://www.helloasso.com/" target="_blank">Faire un don</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+              En quoi ce site contribue à préserver la biodiversité ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>
+              Les informations collectées sur les oiseaux sont transmises à un programme de recherche mené par le Centre National de la Recherche Scientifique. Ce dernier analyse les effets du climat, de l'urbanisation et de l'agriculture sur la biodiversité.
+            </p>
+            <p>
+              Les oiseaux sont <span class="bold">un des indicateurs</span> qui permettent d’étudier l’état de santé de la biodiversité.
+            </p>
+            <p>
+              Les indicateurs dans le monde de la biologie sont très variés. L’état de la biodiversité ne « se mesure pas » comme on mesure une distance.
+              De nombreux paramètres interviennent (nombre d’espèces, taille des populations, interactions entre populations et habitats, position dans la chaîne alimentaire, etc.)
+              et les scientifiques ne peuvent pas définir un indicateur unique de la biodiversité regroupant tous ces paramètres.
+            </p>
+            <p>
+              En partageant vos données, vous contribuez directement à la science. Votre participation est donc cruciale pour le bon avancement du programme !
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+              Comment observer les oiseaux ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p class="bold" style="padding-left: 20px;"> - Reconnaitre les oiseaux</p>
+            <p>
+              Il serait long et rébarbatif de lister le descriptif de toutes les espèces d’oiseaux observables en France, c’est pour cela que nous vous conseillons de vous procurer un guide pour vous aider à identifier les espèces.
+              Il en existe plusieurs très complets, un indispensable pour tout ornithologue !
+            </p>
+            <p>
+              Mais soyez rassuré, toutes les observations sont soumises à une vérification avant d’être communiquées au programme de recherche.
+              En cas de doute, n’hésitez pas à joindre une photo de l’oiseau à votre observation, cela facilitera son identification.
+            </p>
+
+            </br>
+            <p class="bold" style="padding-left: 20px;"> - Les saisons</p>
+            <p>
+              Le printemps est la saison idéale pour observer les oiseaux. Alors que les derniers migrateurs passent chez nous, beaucoup d'oiseaux commencent leur période de nidification.
+              Ils sont donc très actifs pour défendre leur territoire, chercher une femelle, construire le nid...
+            </p>
+            <p>
+              L'été, les oiseaux commencent à se faire plus discrets. Les premiers migrateurs quittent la France et les autres sont occupés à muer ou à élever les jeunes oiseaux.
+            </p>
+            <p>
+              L'automne est la grande saison des migrations. Des millions d'oiseaux survolent notre pays et s'y arrêtent pour s'y reposer.
+            </p>
+            <p>
+              Enfin, on pourrait penser que l'hiver est une saison plus creuse pour les ornithologues mais pas vraiment. En effet, plusieurs espèces d'oiseaux d'Europe hivernent chez nous.
+            </p>
+
+            </br>
+            <p class="bold" style="padding-left: 20px;"> - La météo</p>
+            <p>
+              On peut voir des oiseaux sous toutes les conditions météorologiques mais en général, les oiseaux sont plus actifs lors des journées ensoleillées sans trop de vent.
+              Mais un ornithologue peut sortir par tous les temps, il trouvera quand même quelques oiseaux à observer.
+            </p>
+            <p>
+              La pluie peut parfois forcer certains oiseaux migrateurs à faire une halte et permet alors de trouver des oiseaux moins communs, parfois dans des sites assez insolites.
+            </p>
+            <p>
+              Lors des canicules, il peut être intéressant de visiter les plans d'eau qui attireront plus d'oiseaux que d'habitude.
+            </p>
+
+            </br>
+            <p class="bold" style="padding-left: 20px;"> - La patience</p>
+            <p>
+              En plus du sens de l'observation, la patience est l’arme principale que doit avoir tout ornithologue pour faire des observations de qualité. </br>
+              Les oiseaux sont imprévisibles et il faut parfois du temps avant de les apercevoir.
+              Pour voir une espèce précise dans un lieu donné, cela peut prendre quelques minutes en pleine période d'activité jusqu’à plusieurs jours si l'oiseau est discret.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+              Comment s’équiper pour le terrain ?
+            </a>
+          </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>
+              Pour faire des observations de qualité, vous devrez vous équiper un minimum avant de partir sur le terrain. Voici notre liste des indispensables :
+            </p>
+            <p style="padding-left: 20px;">
+              - Des jumelles. Elles seront nécessaire pour de relever un maximum de détails sur les oiseaux que vous observez.</br>
+              - Un carnet et de quoi écrire pour noter vos observations.</br>
+              - Votre guide d’identification des oiseaux, mêmes les plus confirmés d’entre nous peuvent avoir un doute.</br>
+              - Du matériel photo. C’est toujours plus agréables d’immortaliser vos observations.</br>
+              - Des vêtements adéquats. N’oubliez pas que vous devez être discret.</br>
+              - Des accessoires en fonction des conditions météorologiques (casquettes, lunettes, coupe-vent…)</br>
+            </p>
+            <p>
+              Pour trouver tout votre équipement, n’hésitez pas à vous rendre sur la boutique en ligne <a href="http://www.ornithomedia.com/boutique.html">Ornithomedia</a>, spécialiste en matériel ornithologique !
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

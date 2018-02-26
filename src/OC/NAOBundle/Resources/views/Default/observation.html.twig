@@ -1,0 +1,167 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}Observation de {{ observation.0.taxrefname }} | {% endblock %}
+
+{% block body %}
+
+<div class="row visible-xs">
+  <div class="return">
+    <a class="btn" onClick="javascript:window.history.go(-1)"><span class="glyphicon glyphicon-arrow-left"></span> RETOUR EN ARRIÈRE.</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row hidden-xs">
+    <div class="return">
+      <a class="btn" onClick="javascript:window.history.go(-1)"><span class="glyphicon glyphicon-arrow-left"></span> RETOUR EN ARRIÈRE.</a>
+    </div>
+  </div>
+</div>
+<div class="container Obs">
+  {% if observation.0.notconforme == 1 %}
+  <div class="row">
+    <div class="col-xs-12 conformeZone notconformzone2">
+      <h4 class="bold">L'observation est non conforme :</h4>
+      <h5>{{ observation.0.notconformetext }}</h5>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row observation">
+    {% if observation.0.notsur == 1 and observation.0.status == 0 and observation.0.notconforme == 0 %}
+    <div class="col-xs-12">
+      <div class="right">L'observateur n'est pas sûr de lui.</div>
+    </div>
+    {% endif %}
+
+    <div class="hidden-xs">
+    {% if observation.0.status == 0 and observation.0.notconforme == 0 %}
+      <div class="col-xs-12 obsTitle notValid">
+    {% else %}
+      <div class="col-xs-12 obsTitle">
+    {% endif %}
+      <div class="col-xs-6">
+        <h3 class="obsTaxref">{{ observation.0.taxrefname }}</h3>
+        <h6 class="italic obsFamille">{{ famille }}</h6>
+      </div>
+      {% if (is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST")) and observation.0.status == 0 and observation.0.notconforme == 0 %}
+      <div class="right col-xs-6 changeBtn">
+        <a class="btn right changeTaxrefname" role="button">Modifier</a>
+      </div>
+      <div class="changeName hidden">
+        <form class="form-horizontal" action="{{ path('ocnao_changeTaxrefname', {'id': observation.0.id }) }}" method="POST">
+          <div class="col-xs-offset-2 col-xs-3 right">
+              <input class="form-control white" type="text" name="taxrefname" data-id='listedesespeces'
+              data-url="/Projet5-OC/web/autocomplete" placeholder="Nouveau nom de l'éspece" required/>
+          </div>
+          <div class="col-xs-1 right">
+            <input class="btn changeTaxrefname" type="submit" value="Envoyer"/>
+          </div>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+
+    </div>
+
+    <div class="col-md-6 col-xs-12 noPad"> <!-- observateur -->
+      <div class="obsUser col-xs-12">
+        <img class="col-xs-1 userIconeObs" alt="Icone utilisateur" src="{{ asset("assets/images/userIcone.png")}}" />
+        <p class="col-xs-5 user">{{ observation.0.user.username }}<br><span class="italic">{{ nbObs }} Observation(s) publiée(s)</span></p>
+        <span class="pull-right obsDate">{{ observation.0.dateObs.date|date('d/m/Y') }}</span>
+      </div>
+      <div class="obsPicture col-xs-12 center">
+        {% if observation.0.picture.image is defined %}
+          <img id="photo" class="photoObservation" src=" {{ asset('uploads/picture/' ~ observation.0.picture.image) }}" alt="Photo de l'observation"/>
+        {% else %}
+          <img class="photoObservation" src=" {{ asset('assets/images/fond_recherche.png') }}" alt="Photo de l'observation"/>
+        {% endif %}
+      </div>
+
+      <div class="center visible-xs"> <!-- Titre -->
+        {% if observation.0.status == 0 and observation.0.notconforme == 0 %}
+          <div class="col-xs-12 obsTitle notValid">
+        {% else %}
+          <div class="col-xs-12 obsTitle">
+        {% endif %}
+          <h2>{{ observation.0.taxrefname }}</h2>
+          <h6 class="italic obsFamille">{{ famille }}</h6>
+          {% if observation.0.notsur == 1 and observation.0.status == 0 and observation.0.notconforme == 0 %}
+          <div class="col-xs-12">
+            <div class="right">L'observateur n'est pas sûr de lui.</div>
+          </div>
+          {% endif %}
+          {% if (is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST")) and observation.0.status == 0 and observation.0.notconforme == 0 %}
+          <div class="right col-xs-12 changeBtn">
+            <a class="btn right changeTaxrefname" role="button">Modifier</a>
+          </div>
+          <div class="changeName hidden">
+            <form class="form-horizontal" action="{{ path('ocnao_changeTaxrefname', {'id': observation.0.id }) }}" method="POST">
+              <div class="col-xs-8">
+                <input class="form-control white" type="text" name="taxrefname" data-id='listedesespeces'
+                data-url="/Projet5-OC/web/autocomplete" placeholder="Nouveau nom de l'éspece" required/>
+              </div>
+              <div class="col-xs-4 ">
+                <input class="" type="submit" value="Envoyer">
+              </div>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="carteObs col-md-6 col-xs-12 noPad">
+      <div id="map">
+      </div>
+      <div class="obsPlace">
+        <div class="obsPlaceText">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if observation.0.status == 0 and observation.0.notconforme == 0 %}
+<div class="container noPad">
+  <div class="col-xs-12 conformeZone">
+    <div class="conformeZoneBtn center">
+      <a class="btn btn-site-orange validate" href="{{ path('ocnao_validate', {'id': observation.0.id }) }}" role="button">Valider l'observation</a>
+      <a class="btn btn-site notconforme" role="button">Observation inexacte</a>
+    </div>
+    <div class="notconformzone hidden">
+      <h4 class="bold">INDIQUEZ LE MOTIF DU REFUS DE L'OBSERVATION</h4>
+      <h5>Vos commentaires seront envoyés par mail et sur l'observation de l'observateur.</h5>
+      <form class="form-horizontal" action="{{ path('ocnao_notconforme', {'id': observation.0.id }) }}" method="post">
+        <input class="form-control white" type="text" name="notconformetext" placeholder="Entrez ici le motif de non conformité." required/><br>
+        <div class="col-xs-12">
+          <input class="btn btn-site-orange btnSubmitConforme pull-right" type="submit" value="Envoyer">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div id="autorisation" class="hidden">
+{% if user != null %}
+  {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST") %}
+    <div data-user="ALLOW"></div>
+  {% else %}
+    <div data-user="NOTALLOW"></div>
+  {% endif %}
+{% else %}
+    <div data-user="NOTALLOW"></div>
+{% endif %}
+</div>
+
+<div id="coordonnees" class="hidden">
+    <div data-latitude="{{ observation.0.latitude }}" data-longitude="{{ observation.0.longitude }}" data-username="{{ observation.0.user.username }}" data-conform="{{ observation.0.notconforme }}"></div>
+</div>
+
+<script src="{{asset("assets/js/mapObs.js")}}"></script>
+<script src="{{asset("assets/js/autocomplete.js")}}"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDwjyiE5EGvQcAaJPNkxATWhrxBUsb11A&callback=initMap">
+</script>
+
+{% endblock %}

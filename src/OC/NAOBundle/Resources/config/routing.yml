@@ -1,0 +1,87 @@
+ocnao_homepage:
+    path:     /
+    defaults: { _controller: OCNAOBundle:Home:index }
+ocnao_faq:
+    path:     /faq
+    defaults: { _controller: OCNAOBundle:Home:faq }
+ocnao_mentions:
+    path:     /mentions
+    defaults: { _controller: OCNAOBundle:Home:mentions }
+ocnao_contact:
+    path:     /contact
+    defaults: { _controller: OCNAOBundle:Contact:contact }
+ocnao_addObservation:
+    path:     /addObservation
+    defaults: { _controller: OCNAOBundle:Observation:addObservation }
+ocnao_observation:
+    path:     /observation/{id}
+    defaults: { _controller: OCNAOBundle:Observation:observation }
+ocnao_changeTaxrefname:
+    path:     /change/{id}
+    defaults: { _controller: OCNAOBundle:Observation:changeTaxrefname }
+ocnao_validate:
+    path:     /validate/{id}
+    defaults: { _controller: OCNAOBundle:Observation:validate }
+ocnao_notconforme:
+    path:     /notconforme/{id}
+    defaults: { _controller: OCNAOBundle:Observation:notconforme }
+ocnao_recherche:
+    path:     /recherche
+    defaults: { _controller: OCNAOBundle:Observation:recherche }
+ocnao_results:
+    path:     /results
+    defaults: { _controller: OCNAOBundle:Observation:results }
+ocnao_autocomplete:
+    path:     /autocomplete
+    defaults: { _controller: OCNAOBundle:Observation:autocomplete }
+    requirements:
+      _method: POST
+ocnao_profil_listobs:
+    path:     /profil/list/{statusobs}/{page}
+    defaults:
+        _controller: OCNAOBundle:ProfilList:listObservation
+        page:        1
+        statusobs:  'publish'
+    requirements:
+        page: \d*
+ocnao_profil_observationatvalidate:
+    path:     /obsatvalidate/{page}
+    defaults:
+        _controller: OCNAOBundle:ProfilList:observationAtValidate
+        page:        1
+    requirements:
+        page: \d*
+ocnao_profil_role:
+    path:     /profil/role
+    defaults: { _controller: OCNAOBundle:Profil:role }
+ocnao_profil_validate:
+    path:     /profil/validate/{id}
+    defaults: { _controller: OCNAOBundle:Profil:validate }
+ocnao_profil_parameter:
+    path:     /profil/parameter
+    defaults: { _controller: OCNAOBundle:Profil:parameter }
+ocnao_profil_obsnat:
+    path:     /profil/observer
+    defaults: { _controller: OCNAOBundle:Profil:observer }
+ocnao_profil_users:
+    path:     /profil/users
+    defaults: { _controller: OCNAOBundle:Profil:users }
+ocnao_profil_autocomplete:
+    path:     /profil/autocomplete
+    defaults: { _controller: OCNAOBundle:Profil:userAutoComp }
+    requirements:
+      _method: POST
+ocnao_profil_removeuser:
+    path:     /profil/removeuser
+    defaults: { _controller: OCNAOBundle:Profil:remove }
+ocnao_profil_newsletter:
+    path:     /profil/newsletter
+    defaults: { _controller: OCNAOBundle:Profil:newsletter }
+ocnao_landingpage:
+    path:     /landingpage
+    defaults: { _controller: OCNAOBundle:Home:landingPage }
+# a supprimer
+ocnao_profil_adm:
+    path:     /profil/adm
+    defaults: { _controller: OCNAOBundle:Profil:adm }
+#  fin suppresion

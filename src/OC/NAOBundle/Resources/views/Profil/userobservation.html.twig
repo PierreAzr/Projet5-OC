@@ -1,0 +1,166 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block list %}class="menuactive2"{% endblock %}
+
+
+{% block picto_mes_fiches %}
+  <img class="pictoMini" src="{{ asset("assets/images/Footer_mes_fiches_active.png")}}" alt="Picto_rechercher"/>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container marginlist">
+  <br>
+  <br>
+  {% if (is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST")) %}
+  <div class="col-md-8">
+    <h4>Complétez vos observations en vérifiant les observations d'oiseaux des particuliers</h4>
+  </div>
+  <div class="col-md-4">
+    <form class="" action="{{ path('ocnao_profil_observationatvalidate') }}" method="post">
+        <input type="submit" style="" class="btn-site-orange" value="Vérifier une nouvelle observation">
+    </form>
+  </div>
+  <br>
+  <br>
+  <br>
+  {% endif %}
+  <h1>MES OBSERVATIONS</h1>
+  <br>
+  <ul class="list-inline">
+    <li {% if statusobs == 'publish' %}class="activelist"{% endif %}>
+        <a  class="listmenu " href="{{ path('ocnao_profil_listobs',{'statusobs': 'publish'}) }}">
+          <h4>Publiées</h4>
+        </a>
+    </li>
+    {% if is_granted('ROLE_OBSERVER') %}
+    <li {% if statusobs == 'pending' %}class="activelist"{% endif %}>
+      <a   class="listmenu" href="{{ path('ocnao_profil_listobs',{'statusobs': 'pending'}) }}">
+        <h4>En attente de validation</h4>
+      </a>
+    </li>
+    <li {% if statusobs == 'conform' %}class="activelist"{% endif %}>
+      <a  class="listmenu" href="{{ path('ocnao_profil_listobs',{'statusobs': 'conform'}) }}">
+        <h4>Inéxactes</h4>
+      </a>
+    </li>
+    {% endif %}
+    {% if is_granted(['ROLE_NATURALIST', 'ROLE_ADMIN']) %}
+    <li {% if statusobs == 'validate' %}class="activelist"{% endif %}>
+      <a  class="listmenu" href="{{ path('ocnao_profil_listobs',{'statusobs': 'validate'}) }}">
+        <h4>Vérifiées</h4>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+
+{% if statusobs == 'publish' %}
+
+{% endif %}
+
+  {% if notobs == true %}
+  <div class="text-center" style="margin-bottom:15%">
+    <h4>Il n'y a pas encore d'obvervation dans cette section</h4>
+  </div>
+
+  {% else %}
+
+  <div class="row">
+    {% for obs in observationList %}
+    <div class="responsive">
+      {% if statusobs == 'pending' %}<div class="gallerygris">{% endif %}
+      {% if statusobs == 'publish' %}<div class="gallery">{% endif %}
+      {% if statusobs == 'conform' %}<div class="gallerybar">{% endif %}
+      {% if statusobs == 'validate' %}
+          {% if obs.notconforme == true %}
+            <div class="gallerybar">
+            {% else %}
+            <div class="gallery">
+          {% endif %}
+      {% endif %}
+              <div class="overlay">
+                {% if obs.picture.image is defined %}
+                  <div class="picture2">
+                    <a href="{{ path('ocnao_observation', {'id': obs.id }) }}">
+                      <img class="imggallery" src="{{ asset('uploads/picture/' ~ obs.picture.image) }}" alt="Photo de l'observation"/>
+                    </a>
+                  </div>
+                {% else %}
+                  <div class="picture2">
+                    <a href="{{ path('ocnao_observation', {'id': obs.id }) }}">
+                      <img class="imggallery" src="{{ asset('assets/images/photoObs2.png') }}" alt="Photo de l'observation"/>
+                    </a>
+                  </div>
+                {% endif %}
+                <div class="desc">
+                  <div class="" style="color:#00ac98;">
+                    {{ obs.taxrefname }}
+                  </div>
+                  <div class="" style="margin-top:10px">
+                    <div class="text-left" style="margin-right:15%;display: inline-block;">
+                      {{ obs.user.username }}
+                    </div>
+                    <div class="text-right"style="margin-left:15%; display: inline-block;">
+                      {{ obs.dateObs.date|date("d/m/Y") }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    {% endfor %}
+    </div>
+    </div>
+        <div class="row">
+          <br>
+          <div class="hidden-xs">
+            <br>
+            <div class="text-center">
+              <ul class="pagination">
+                {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                {% for p in range(1, nbPages) %}
+
+                  <li{% if p == page %} class="active"{% endif %}>
+                  <a href="{{ path('ocnao_profil_listobs', {'statusobs': statusobs, 'page': p}) }}">{{ p }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 visible-xs">
+          <div class="text-left">
+            {% if page == 1 %}
+            <!-- <div class="">
+              <a href="{{ path('ocnao_profil_listobs', {'statusobs': statusobs, 'page': 1}) }}">precedent</a>
+            </div> -->
+            {% else %}
+            <div class="">
+                <a href="{{ path('ocnao_profil_listobs', {'statusobs': statusobs, 'page': page - 1}) }}"><img style="height:50px" src="{{ asset('assets/images/Pictoflecheg.png') }}" alt="precedente"></a>
+            </div>
+            {% endif %}
+          </div>
+          <br>
+          </div>
+        <div class="col-xs-6 visible-xs">
+        <div class="text-right">
+          {% if page == nbPages %}
+          <!-- <div class="">
+            <a href="{{ path('ocnao_profil_listobs', {'statusobs': statusobs, 'page': page}) }}">suivante</a>
+          </div> -->
+        {% else %}
+        <div class="">
+          <a href="{{ path('ocnao_profil_listobs', {'statusobs': statusobs, 'page': page + 1}) }}"><img style="height:50px" src="{{ asset('assets/images/Pictofleched.png') }}" alt="suivante"></a>
+        </div>
+        {% endif %}
+        </div>
+        <br>
+    </div>
+  </div>
+  <!-- fin test not obs -->
+  {% endif %}
+
+
+<!-- div fin container -->
+  </div>
+{% endblock %}

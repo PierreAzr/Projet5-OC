@@ -1,0 +1,50 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<div class="bgform">
+  <div class="container form">
+    <br>
+    <br>
+    <h1>CONNEXION</h1>
+    <br>
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <br>
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+        <div class="form-group">
+          <label class="control-label" for="username">{{ 'Pseudo/Email'|trans }}</label>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+        <br>
+        <div class="form-group">
+          <label class="control-label" for="password">{{ 'security.login.password'|trans }}</label>
+          <input class="form-control" type="password" id="password" name="_password" required="required"/>
+            <div class="text-right">
+              <br>
+              <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+            </div>
+        </div>
+        <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me" style="text-transform:none"class="etoile">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+        <br>
+        <br>
+        <div class="text-right">
+            <input class="btn-site-orange" style="width:221px" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <br>
+            <br>
+            <p>Pas encore Membre ?<br><a href="{{ path('fos_user_registration_register') }}">Inscrivez vous.</a></p>
+        </div>
+        <br>
+    </form>
+    <p><span style="color:red">* </span><span style="color:#ff5b00"> Champs obligatoire</span></p>
+    <br/>
+    <br/>
+  </div>
+</div>

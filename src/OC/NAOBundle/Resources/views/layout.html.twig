@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{% endblock %}Nos Amis les Oiseaux</title>
+  {% block meta %}{% endblock %}
+
+  {% block stylesheets %}
+  <!-- jQuery -->
+  <script src="{{asset("assets/jquery/js/jquery-3.2.1.min.js")}}"></script>
+	<script src="{{asset("assets/jquery/js/jquery-ui.min.js")}}"></script>
+	<!-- Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{asset("assets/jquery/css/jquery-ui.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/css/map.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/css/main.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/css/menu.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/css/profil.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/jquery/css/jquery-ui.structure.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/jquery/css/jquery-ui.theme.css")}}">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+  <!-- DatePicker -->
+  <link rel="stylesheet" href="{{asset("assets/datepicker/css/bootstrap-datepicker3.min.css")}}">
+  <script src="{{asset("assets/datepicker/js/bootstrap-datepicker.js")}}"></script>
+  <script src="{{asset("assets/datepicker/locales/bootstrap-datepicker.fr.min.js")}}"></script>
+
+  <script type="text/javascript" id="cookiebanner" src="{{asset("assets/js/cookiebanner.min.js")}}" data-position="bottom" data-fg="#ffffff"
+    data-bg="rgba(255, 91, 0, 0.8)" data-link="#dddddd" data-moreinfo="{{ path('ocnao_mentions') }}"
+    data-message="Les cookies assurent le bon fonctionnement de notre site Internet. En utilisant ce dernier, vous acceptez leur utilisation." data-linkmsg="En savoir plus">
+  </script>
+
+  {% endblock %}
+
+</head>
+<body>
+  <!-- Navbar sur ordinateur -->
+  <div class="visible-sm visible-md visible-lg">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="{{ path('ocnao_homepage') }}"><img class="logoMenu" alt="Logo" src="{{ asset("assets/images/LogomenuNAO@3x.png")}}"/></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <a  {% block rechercher %}{% endblock %} href="{{ path('ocnao_recherche') }}">
+              <span class="visible-lg">RECHERCHER UNE OBSERVATION</span>
+              <span class="visible-md">RECHERCHER UNE<br>OBSERVATION</span>
+              <span class="visible-sm">RECHERCHER<br>OBSERVATION</span>
+            </a>
+          </li>
+          <li>
+            <a {% block ajouter %}{% endblock %} href="{{ path('ocnao_addObservation') }}">
+              <span class="visible-lg">AJOUTER UNE OBSERVATION</span>
+              <span class="visible-md">AJOUTER UNE<br>OBSERVATION</span>
+              <span class="visible-sm">AJOUTER<br>OBSERVATION</span>
+            </a>
+          </li>
+          {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST") %}
+            <li>
+              <a {% block observationvalide %}{% endblock %} href="{{ path('ocnao_profil_observationatvalidate') }}">
+                <span class="visible-lg">OBSERVATIONS À VALIDER</span>
+                <span class="visible-md">OBSERVATIONS<br>À VALIDER</span>
+                <span class="visible-sm">VALIDER<br>OBSERVATION</span>
+              </a>
+            </li>
+          {% endif %}
+          <li>
+            <a {% block faq %}{% endblock %} href="{{ path('ocnao_faq') }}">
+              <span class="visible-lg">COMMENT CA MARCHE ?</span>
+              <span class="visible-md visible-sm">COMMENT<br>CA MARCHE ?</span>
+            </a>
+          </li>
+          <li>
+            <a {% block contact %}{% endblock %} href="{{ path('ocnao_contact') }}">
+              <span class="visible-lg">NOUS CONTACTER</span>
+              <span class="visible-md visible-sm">NOUS<br>CONTACTER</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li class="dropdown">
+                <a class="btn dropdown-toggle" data-toggle="dropdown">
+                  <img class="userIcone" alt="Icone Utilisateur" src="{{ asset("assets/images/userIcone.png")}}" />
+                </a>
+                <ul class="dropdown-menu">
+                  {% if is_granted("ROLE_ADMIN") %}
+                  <li><a {% block user1 %}{% endblock %} href="{{ path('ocnao_profil_users') }}">GESTION DES UTILISATEURS</a></li>
+                  {% endif %}
+                  <li><a {% block list %}{% endblock %} href="{{ path('ocnao_profil_listobs') }}">MES OBSERVATIONS</a></li>
+                  <li><a {% block parameter %}{% endblock %} href="{{ path('ocnao_profil_parameter') }}">MES PARAMÈTRES</a></li>
+                  <li><a href="{{ path('fos_user_security_logout') }}">DÉCONNEXION</a></li>
+                </ul>
+            </li>
+            <li><a class="don" href="https://www.helloasso.com/" target="_blank">Faire un don</a></li>
+            {% else %}
+            <li><a class="inscription" href="{{ path('fos_user_registration_register') }}">S'INSCRIRE</a></li>
+            <li><a class="connexion" href="{{ path('fos_user_security_login') }}" >SE CONNECTER</a></li>
+            <li><a class="don hidden-sm" href="https://www.helloasso.com/" target="_blank">Faire un don</a></li>
+            <li><a class="don visible-sm" href="https://www.helloasso.com/" target="_blank">don</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Fin navbar sur ordinateur -->
+
+  <!-- Navbar sur smartphone -->
+  <div class="visible-xs">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed menubutton" data-toggle="collapse" data-target=".menu" aria-expanded="false" data-placement="bottom" >
+            <span class="icon-bar barre"></span>
+            <span class="icon-bar barre"></span>
+            <span class="icon-bar barre"></span>
+            <span class="icon-bar barre"></span>
+          </button>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <button type="button" class="navbar-toggle collapsed usermenubutton" data-toggle="collapse" data-target=".usermenu" aria-expanded="false" data-placement="bottom" >
+            <img class="userIcone" alt="Icone Utilisateur" src="{{ asset("assets/images/userIcone.png")}}"/>
+          </button>
+          {% else %}
+          <a class="navbar-toggle connexion" href="{{ path('fos_user_security_login') }}" >CONNEXION</a>
+          <a class="navbar-toggle inscription" href="{{ path('fos_user_registration_register') }}">S'INSCRIRE</a>
+          {% endif %}
+          <a class="" href="{{ path('ocnao_homepage') }}"><img class="logoMenu" alt="Logo" src="{{ asset("assets/images/LogomenuNAO@3x.png")}}" /></a>
+        </div>
+      </div>
+      <div id="test" class="collapse navbar-collapse menu center">
+        <ul class="nav navbar-nav">
+          <li><a {% block rechercher4 %}{% endblock %} href="{{ path('ocnao_recherche') }}">RECHERCHER UNE OBSERVATION</a></li>
+          <li><a {% block ajouter4 %}{% endblock %} href="{{ path('ocnao_addObservation') }}">AJOUTER UNE OBSERVATION</a></li>
+          {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_NATURALIST") %}
+            <li><a {% block observationvalide4 %}{% endblock %} href="{{ path('ocnao_profil_observationatvalidate') }}">OBSERVATIONS À VALIDER</a></li>
+          {% endif %}
+          <li><a {% block faq4 %}{% endblock %} href="{{ path('ocnao_faq') }}">COMMENT CA MARCHE ?</a></li>
+          <li><a {% block contact4 %}{% endblock %} href="{{ path('ocnao_contact') }}">NOUS CONTACTER</a></li>
+          <li><a href="https://www.helloasso.com/" target="_blank">Faire un don</a></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse usermenu center">
+        <ul class="nav navbar-nav navbar-right">
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              {% if is_granted("ROLE_ADMIN") %}
+              <li ><a {% block user4 %}{% endblock %} href="{{ path('ocnao_profil_users') }}">GESTION DES UTILISATEURS</a></li>
+              {% endif %}
+              <li ><a {% block list4 %}{% endblock %} href="{{ path('ocnao_profil_listobs') }}">MES OBSERVATIONS</a></li>
+              <li ><a {% block parameter4 %}{% endblock %} href="{{ path('ocnao_profil_parameter') }}">MES PARAMÈTRES</a></li>
+              <li ><a href="{{ path('fos_user_security_logout') }}">DÉCONNEXION</a></li>
+          {% else %}
+          <li ><a class="inscription" href="{{ path('fos_user_registration_register') }}">S'INSCRIRE</a></li>
+          <li ><a class="connexion" href="{{ path('fos_user_security_login') }}" >SE CONNECTER</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- Fin navbar sur smartphone -->
+
+  <!-- Navbar bottom sur smartphone -->
+  {% block footerMobile %}
+  <nav class="navBottom visible-xs navbar-fixed-bottom">
+    <div class="col-xs-4">
+      <a href="{{ path('ocnao_recherche') }}">
+        {% if block('picto_rechercher') %}
+          {% block picto_rechercher %}{% endblock %}
+        {% else %}
+          <img class="pictoMini" src="{{ asset("assets/images/Footer_rechercher.png")}}" alt="Picto_rechercher"/>
+        {% endif %}
+        <h6>RECHERCHER</h6>
+      </a>
+    </div>
+    <div class="col-xs-4">
+      <a href="{{ path('ocnao_addObservation') }}">
+        {% if block('picto_observer') %}
+          {% block picto_observer %}{% endblock %}
+        {% else %}
+          <img class="pictoMini" src="{{ asset("assets/images/Footer_observer.png")}}" alt="Picto_observer"/>
+        {% endif %}
+        <h6>OBSERVER</h6>
+      </a>
+    </div>
+    <div class="col-xs-4">
+      <a href="{{ path('ocnao_profil_listobs') }}">
+        {% if block('picto_mes_fiches') %}
+          {% block picto_mes_fiches %}{% endblock %}
+        {% else %}
+          <img class="pictoMini" src="{{ asset("assets/images/Footer_mes_fiches.png")}}" alt="Picto_mes_fiches"/>
+        {% endif %}
+        <h6>MES OBSERVATIONS</h6>
+      </a>
+    </div>
+  </nav>
+  {% endblock %}
+  <!-- Fin navbar bottom sur Smartphone -->
+
+  <div class="container" style="margin-top:64px; padding:0;"> <!-- Messages d'informations -->
+    {% for label, messages in app.flashes(['info', 'success', 'danger']) %}
+      {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  {% block body %}
+    {% if block("user") is defined %}
+        {% block user %}{% endblock %}
+    {% endif %}
+  {% endblock %}
+
+  <footer>
+    <!-- Footer du site -->
+    <div class="footer container">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="center"> <!-- reseaux sociaux -->
+          <div class="row logoSociaux">
+            <a href="https://www.facebook.com" target="_blank"><img src="{{ asset("assets/images/fb_logo.png")}}" alt="Logo Facebook"/></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="{{ asset("assets/images/twitter_logo.png")}}" alt="Logo Twitter"/></a>
+          </div>
+          <div class="row">
+            <p class="white">ABONNEZ-VOUS À NOTRE NEWSLETTER</p>
+            <form class="" action="#" method="post">
+              <input class="bgnews" type="email" name="email" value="" placeholder="Entrez votre adresse mail"/>
+              <input class="bgnews" type="submit" name="abonnement" value="S'abonner"/>
+            </form>
+
+          </div>
+          <div class="row col-md-12 col-xs-12">
+            <div class="col-xs-4">
+              <a href="{{ path('ocnao_faq') }}">COMMENT CA MARCHE ?</a>
+            </div>
+            <div class="col-xs-4 border_side">
+              <a href="{{ path('ocnao_contact') }}">NOUS CONTACTER</a>
+            </div>
+            <div class="col-xs-4">
+              <a href="{{ path('ocnao_mentions') }}">MENTIONS LÉGALES</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin footer du site -->
+  </footer>
+<script src="{{asset("assets/js/main.js")}}"></script>
+<script>
+$(document).ready(function(){
+//temps apparition du message alert
+     setTimeout(function() {
+       $('.alert').fadeOut('fast');
+     }, 5000); // <-- time in milliseconds
+ });
+</script>
+</body>
+</html>

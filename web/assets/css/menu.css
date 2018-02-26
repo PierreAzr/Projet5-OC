@@ -1,0 +1,253 @@
+/*CSS des menus de navigation */
+
+/*////Css menu principal////*/
+.logoMenu {
+  width: auto;
+  height: 64px;
+  margin-left: -15px
+}
+
+.userIcone {
+  height: 34px;
+  width: auto;
+}
+
+.navbar-default{
+  background-color: #FFF;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding-left: 8px;
+  padding-right: 8px;
+  color: black;
+  font-weight: 500;
+  font-size: 1.3rem !important;
+  line-height:34px; /* center vertical menu lg padding de 15 15+15+34 =64*/
+}
+
+.menuactive{
+  color:#ff5b00!important;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ff5b00;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover{
+border-color: white;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover{
+  background-color:#ff5b00;
+  color:white;
+}
+
+.inscription, .connexion, .don {
+  padding: 0px 15px 0px 15px !important;
+  height: 34px!important;
+  border-width: 0px 0px 0px 0px!important;
+  margin-top: 15px;
+  margin-right: 8px;
+  font-weight: 550!important;
+  color: #fff!important;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.inscription:hover, .connexion:hover, .don:hover {
+  text-decoration: none!important;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.inscription {
+  background-color: #ff5b00!important;
+}
+
+.connexion {
+  background-color: #747473!important;
+}
+
+.don {
+  background-color: #00c4b6!important;
+}
+
+.barre {
+  background-color: #00ac98!important;
+}
+
+.menu {
+  background-color: #00ac98!important;
+  border-top: 3px solid #00c4b6!important;
+  border-bottom: 3px solid #00c4b6!important;
+}
+
+.usermenu {
+  background-color: #ffa676;
+  border-top: 3px solid #ff5b00!important;
+  border-bottom: 3px solid #ff5b00!important;
+}
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+  .navbar-default .navbar-nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height:17px; /* center vertical menu lg padding de 15 15+15+34 =64*/
+  }
+
+  .navbar-right > li > a {
+  line-height:34px!important;
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+  .navbar-default .navbar-nav > li > a {
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 1.1rem !important;
+    line-height:17px;
+    color: black;
+  }
+
+  .inscription, .connexion{
+    padding: 0 12 0 12 !important;
+    margin-right: 7px;
+  }
+
+  .don{
+    padding: 0 10 0 10 !important;
+    margin-right: 7px;
+  }
+
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+  .userIcone {
+    height: 20px;
+    width: auto;
+  }
+
+  .navbar-toggle{
+    margin-top: 12px;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    text-align: left;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+  }
+
+  .usermenu .navbar-nav > li > a {
+    width: 150px;
+    color: black;
+  }
+
+  .inscription, .connexion{
+    margin-top: 20px;
+    padding: 0 12 0 12 !important;
+    font-size: 0.9rem !important;
+    text-align: center;
+    width: 80px;
+    height: 25px!important;
+    border-width: 0px 0px 0px 0px!important;
+    margin-right: 8px;
+    font-weight: 400!important;
+    color: #fff!important;
+    border-radius: 15px 15px 15px 15px;
+    font-size: x-small;
+    line-height: 25px;
+    text-decoration: none;
+  }
+
+  .home {
+    padding-bottom: 30px;
+  }
+
+  .logoMenu {
+    margin-left: 0px;
+  }
+
+  /* .navbar-default{
+    min-width: 362px;
+  } */
+}
+
+
+.arrow::before {
+  border-bottom-color: #bebebe;
+  left: 14px;
+  border-width: 0 11px 9px 11px;
+}
+
+.arrow::before, .arrow::after {
+  content: " ";
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border: 1px solid transparent;
+  border-bottom-color: #ff5b00;
+  border-width: 0 7px 9px 7px;
+  border-width: 0 10px 8px 10px;
+  position: absolute;
+  bottom: -13px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.arrow2::before {
+  border-bottom-color: #bebebe;
+  left: 14px;
+  border-width: 0 11px 9px 11px;
+}
+
+.arrow2::before, .arrow2::after {
+  content: " ";
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border: 1px solid transparent;
+  border-bottom-color: #00c4b6;
+  border-width: 0 7px 9px 7px;
+  border-width: 0 10px 8px 10px;
+  position: absolute;
+  bottom: -13px;
+  left: 10px;
+  z-index: 1000;
+}
+
+/*//// fin Css menu principal////*/
+
+
+.pictoMini {
+  height: 45px;
+  width: auto;
+  background-color: #00ac98;
+}
+
+.navBottom  {
+  background-color: #00ac98;
+  height: 70px;
+}
+
+.navBottom div {
+  text-align: center;
+  padding: 0;
+  padding-top: 4px;
+}
+
+.navBottom h6 {
+  margin: 5px;
+  font-size: 10px;
+  color: white;
+}

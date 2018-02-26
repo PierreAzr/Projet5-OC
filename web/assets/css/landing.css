@@ -1,0 +1,144 @@
+/* CSS Landing page */
+
+.container {
+  width: 55%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 2.7REM;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 2REM;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5REM;
+  font-weight: 500;
+}
+
+a{
+  color: #ff5b00;
+}
+a:hover{
+  color: #00ac98;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.bloc1 {
+  margin-top: 0px;
+  color: white;
+  background-image: url("../images/landingPage.jpg");
+  height: 450px;
+  background-size: cover;
+  text-align: center;
+}
+
+.bloc1 h1 {
+  margin: 0px;
+  padding: 120px 60px 30px 60px;
+}
+
+.bloc1 p {
+  padding: 0px 60px 30px 60px;
+}
+
+.who {
+  color: #00ac98;
+  text-transform: uppercase;
+}
+
+.bloc3 {
+  background-color: #e4e4db;
+}
+
+.bloc4_1 {
+  background-color: #493c32;
+  color: white;
+  min-height: 337px;
+  height: auto;
+}
+
+.bloc5 {
+  background-color: #747473;
+  color: white;
+  padding: 20px 30px 40px 30px;
+}
+
+.noPad {
+  padding: 0;
+}
+
+.pad {
+  padding: 20px 30px 40px 30px;
+}
+
+.center {
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
+.picto_landing img {
+  width: 150px;
+  height: auto;
+  position: relative;
+}
+
+.picto_landing_partage img {
+  width: 90px;
+  height: auto;
+  position: relative;
+}
+
+.photo {
+  padding-left: 20px;
+}
+
+.photo img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.microscope {
+  position: absolute;
+  height: 250px;
+  width: auto;
+  bottom: 0px;
+  left: 0px;
+}
+
+@media screen and (max-width:767px) {
+  .container {
+    width: 100%;
+  }
+  .logoMenu {
+    max-width: 100%;
+    height: auto;
+  }
+  .photo {
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width:1219px) {
+  .container {
+    width: 100%;
+  }
+  .logoMenu {
+    max-width: 100%;
+    height: auto;
+  }
+}

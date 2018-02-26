@@ -1,0 +1,14 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}Erreur: {{ status_text }} | {% endblock %}
+
+{% block body %}
+    <h1>Oups, il s'emblerait qu'il y ai eu une erreur.</h1>
+
+    <h2>Le serveur à retourné l'erreur suivante: "{{ status_code }},  {{ status_text }}".</h2>
+    <p>{{ exception.message }}</p>
+    <div>
+      <p>Quelques chose ne va pas, merci d'en informer l'adminisation via le formulaire de contact, nous travaillerons pour resoudre cette erreur le plus vite possible.</p>
+      <p>Nous nous excusons de la gene occasionné. Merci de votre compréhension.</p>
+    </div>
+{% endblock %}

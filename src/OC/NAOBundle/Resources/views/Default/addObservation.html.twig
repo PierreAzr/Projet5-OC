@@ -1,0 +1,89 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}Ajout d'observation d'oiseaux | {% endblock %}
+{% block meta %}
+  <meta name="description" content="Partagez vos observations sur les oiseaux autour de vous. L'espèce, la localisation, la date sont de précieuses informations pour les scientifiques. " />
+{% endblock %}
+
+{% block ajouter %}class="menuactive"{% endblock %}
+
+
+{% block picto_observer %}
+  <img class="pictoMini" src="{{ asset("assets/images/Footer_observer_active.png")}}" alt="Picto_rechercher"/>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <h1>AJOUTER UNE OBSERVATION</h1>
+  <div class="row add">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+      {{ form_start(form) }}
+        {% if form_errors(form.picture.image) or form_errors(form.taxrefname) or form_errors(form.latitude) %}
+          <div class="alert alert-danger">
+            {{ form_errors(form) }}
+            {{ form_errors(form.picture.image) }}
+            {{ form_errors(form.taxrefname) }}
+            {% if form_errors(form.latitude) %}
+              Merci de cliquez sur la carte pour definir l'emplacement de votre observation.
+            {% endif %}
+          </div>
+        {% endif %}
+      <div class="formulaire col-md-6 col-xs-12">
+        <div class="imageForm">
+          <h4 class="imageLabel">PHOTO DE L'OISEAU OBSERVÉ</h4>
+
+          <label class="photoFileLabel col-xs-12 control-label center etoile" for="observation_picture_image">
+            <img id="blah" src="{{asset("assets/images/choosePic.png")}}" onclick="javascript:readURL();" alt=""></img>
+          </label>
+          {{ form_widget(form.picture.image, {'attr': {'class': 'hidden'}} ) }}
+        </div>
+
+      <h4 class="addEtoile">NOM DE L'ÉSPÈCE OBSERVÉE</h4>
+      {{ form_widget(form.taxrefname, {
+        'attr': {
+        'data-id': 'listedesespeces',
+        'data-url': path('ocnao_autocomplete')
+        }
+        })
+      }}
+      {{ form_widget(form.notsur, {'label': 'Je ne suis pas sûr(e) de moi', 'label_attr': {'class': 'etoile normal'} } ) }}
+      <h4 class="addEtoile">DATE DE L'OBSERVATION</h4>
+      {{ form_row(form.dateObs) }}
+    </div>
+
+    <div class="carte col-md-6 col-xs-12">
+      <h4 class="addEtoile">EMPLACEMENT DE L'OISEAU OBSERVÉ</h4>
+      <h6 class="italic">Cliquez sur la carte pour indiquer l'emplacement de l'oiseau.</h6>
+      <div id="map">
+      </div>
+      <div class="Coordonnees">
+        <div class="hidden">
+        {{ form_row(form.latitude, {'label': "Latitude"}) }}
+        {{ form_row(form.longitude, {'label': "Longitude"}) }}
+        </div>
+      </div>
+      <input class="form-control" id="observation_ville" type="email" name="email" value="" placeholder="" readonly></input>
+    </div>
+    <div class="col-xs-12 submitBtn">
+      <div class="champs"> * Champs obligatoire</div>
+      {{ form_row(form.submit, {'label': 'Envoyer', 'attr': {'class': 'btn-site-orange pull-right', 'style': 'width:221px'}}) }}
+      {{ form_end(form) }}
+    </div>
+    {% else %}
+    <p>Vous devez être connecté pour acceder à cette partie du site</p>
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a></br>
+    <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+    {% endif %}
+  </div>
+</div>
+
+
+<script src="{{asset("assets/js/mapAddObs.js")}}"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDwjyiE5EGvQcAaJPNkxATWhrxBUsb11A&callback=initMap">
+</script>
+<script src="{{asset("assets/js/autocomplete.js")}}"></script>
+
+
+{% endblock %}

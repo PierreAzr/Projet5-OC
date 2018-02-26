@@ -1,0 +1,105 @@
+{% extends 'OCNAOBundle::layout.html.twig' %}
+
+{% block title %}L'ornithologie au service de la science | {% endblock %}
+
+{% block meta %}
+  <meta name="description" content="Découvrez l'ornithologie au service de la recherche scientifique. Partagez vos observations sur les oiseaux autour de vous et faites avancer la science." />
+{% endblock %}
+
+{% block footerMobile %}
+<div class="hidden">
+</div>
+{% endblock %}
+
+{% block body %}
+  <div class="xs-hiden home1">
+      <div class="col-xs-12 col-md-offset-7 col-md-5">
+        <div class="text-center">
+        <br>
+        <br>
+        <h1 class="white">DÉCOUVREZ L'ORNITHOLOGIE.</br>PARTAGEZ VOS OBSERVATIONS SUR LES OISEAUX.</h1>
+        <br>
+          <form action="{{ path('ocnao_faq') }}">
+              <input class="btn-site btnIndex1" style="width:264px" type="submit" value="Rechercher une espèce" />
+          </form>
+          <br>
+          <form action="{{ path('ocnao_addObservation') }}">
+              <input class="btn-site-orange btnIndex2" style="width:264px" type="submit" value="Partager vos observations" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+<div class="bg-home2">
+<div class="container home">
+  <div class="home2">
+      <div class="col-xs-12 col-md-6">
+        <h4>CONTRIBUER À LA SCIENCE</h4>
+        <p>
+          Nos Amis les Oiseaux est une association regroupant des passionnés de la nature et plus particulièrement d'ornithologie.
+          Amateurs ou professionnels, nous observons et étudions le monde des oiseaux.
+        </p>
+        <p>
+          La collecte de données sur les oiseaux est une source d'information précieuse pour les scientifiques.
+          C'est un indicateur important de l'état de santé de la nature.
+        </p>
+        <p>
+          En partageant vos observations, vous contribuez à un programme de recherche visant à étudier les effets du climat,
+          de l'urbanisation et de l'agriculture sur la biodiversité.
+        </p>
+        <br>
+        <div class="btng">
+        <!-- <div class="col-xs-6 col-sm-4 col-md-4"> -->
+          <form class="btn1" action="{{ path('ocnao_recherche') }}">
+              <input class="btn-site btnIndex1" style="width:147px" type="submit" value="En savoir +" />
+          </form>
+        <!-- </div> -->
+        <!-- <div class="col-xs-6 col-sm-4 col-md-4"> -->
+          <form class="btn2" action="{{ path('fos_user_registration_register') }}">
+              <input class="btn-site-orange btnIndex2" style="width:147px" type="submit" value="S'inscrire" />
+          </form>
+        <!-- </div> -->
+        </div>
+
+
+      </div>
+      <div class="hidden-xs hidden-sm col-md-6">
+        <div class="text-center">
+            <img style="height:300px;"src="{{ asset("assets/images/fond_recherche.png")}}" alt="fond_recherche">
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+<div class="container home">
+  <div class="home3 text-center">
+    <div class="col-xs-12 col-md-4 text-home3">
+      <a class="text-center" href="{{ path('ocnao_recherche') }}">
+        <img class="picto" src="{{ asset("assets/images/Picto_rechercher.png")}}" alt="Picto_rechercher">
+      </a>
+      <h4>RECHERCHER UNE ESPÈCE</h4>
+      <p>Vous souhaitez découvrir quels oiseaux se trouvent autour de vous ?</p>
+      <p>Nous avons regroupés sur une carte toutes les observations de nos observateurs.</p>
+
+      <br>
+    </div>
+    <div class="col-xs-12 col-md-4 text-home3">
+      <a href="{{ path('ocnao_addObservation') }}"><img class="picto" src="{{ asset("assets/images/Picto_observer.png")}}" alt="Picto_observer"></a>
+      <h4>AJOUTER UNE OBSERVATION</h4>
+      <p> Vous avez observé un oiseau ?</p>
+      <p>Relevez son espèce, sa position et partagez vos informations.</p>
+      <p>Aidez la science en quelques clics !</p>
+      <br>
+    </div>
+    <div class="col-xs-12 col-md-4 text-home3">
+      <a href="{{ path('ocnao_profil_listobs') }}"><img class="picto" src="{{ asset("assets/images/Picto_mes_fiches.png")}}" alt="Picto_mes_fiches"></a>
+      <h4>ACCÉDER À VOS OBSERVATIONS</h4>
+      <p>Suivez vos observations sur votre page de Profil personnelle.</p>
+      <p>Rejoigne notre communauté et devenez un naturaliste confirmé en Ornithologie !</p>
+
+
+    </div>
+  </div>
+</div>
+{% endblock %}

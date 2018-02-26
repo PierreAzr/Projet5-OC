@@ -1,0 +1,20 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="bgform">
+  <div class="container">
+    <br>
+    <br>
+    <div style="margin-top:10%; margin-bottom:40%">
+      <h4>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h4>
+      <h4><a href="{{ path('ocnao_homepage') }}">Allez sur la page d'accueil</a></h4>
+      {% if targetUrl %}
+      <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock fos_user_content %}
